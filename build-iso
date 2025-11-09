@@ -1,0 +1,38 @@
+#!/bin/sh
+ISO_OUT_DIR="/home/$(whoami)/Documents/os-iso/"
+DELETE_OLD=y
+SKIP_CURRENT=y
+ARCH="x86_64"
+
+ARCHISO_PROFILE="$1"
+[ -z "$1" ] && ARCHISO_PROFILE="zestiso-kde-gaming"
+[ -z "$ARCH" ] && ARCH="$(uname -m)"
+MEM_MB_SIZE=$(free -m | grep "Mem:" | xargs | cut -d ' ' -f 2)
+if [ $MEM_MB_SIZE -ge 20480 ]; then
+	ARCHISO_WORK_DIR="/tmp/archiso-tmp"
+else ARCHISO_WORK_DIR="work"; fi
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+cd "$SCRIPT_DIR"
+sudo rm -rf out
+
+case $SKIP_CURRENT in y|Y|yes|Yes|YES|1|true|True|TRUE)
+if [ -f "$ISO_OUT_DIR/$ARCHISO_PROFILE-$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)-$ARCH.iso" ]; then
+echo "Latest ISO already built ($(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d))"; echo "Skipping build..."
+exit; fi; esac
+
+echo "BUILD ISO: $(date)"
+sudo mkarchiso -v -w "$ARCHISO_WORK_DIR" "$ARCHISO_PROFILE" || exit 1
+
+sudo chown -R $(whoami):$(whoami) out; cd out; mkdir -p "$ISO_OUT_DIR"
+
+case $DELETE_OLD in y|Y|yes|Yes|YES|1|true|True|TRUE)
+rm "$ISO_OUT_DIR/$ARCHISO_PROFILE-*-$ARCH.iso";; esac
+
+mv *.iso "$ISO_OUT_DIR"
+cd ../; rmdir out; sudo rm -rf "$ARCHISO_WORK_DIR"
+
+echo "ISO BUILT: $(date)"; echo "Syncing data to disk..."; sync
+
+paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+notify-send --urgency=critical --app-name="mkarchiso" --icon=media-optical "ArchISO build complete" "$1"
