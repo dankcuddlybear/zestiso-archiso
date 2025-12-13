@@ -7,7 +7,6 @@ pacman
 grub
 mkinitcpio-archiso
 syslinux
-## airootfs files and scripts
 zestiso-archiso-files
 ## Essential system packages
 amd-ucode
@@ -17,19 +16,13 @@ iptables-nft
 mkinitcpio
 ## Core base packages and utilities
 zestiso-core
-#arch-tweaks
-#base
-#bashrc-d
-#dosfstools
-#efibootmgr
-#linux-firmware
-#sudo
 ## Installer (will be removed after installation)
-calamares-git
+zestiso-installer
 ## Extra system packages (recommended)
 dotfiles-installer
 os-prober
 terminus-font
+zestiso-branding
 #### END OF SECTION ####
 
 ## You may customise your ISO image in the following sections.
@@ -41,30 +34,30 @@ linux-zen-headers
 
 #### System components (all in one metapackages) ####
 ## Bluetooth support via BlueZ
-bundle-bluetooth
+#bundle-bluetooth
 #
 ## Useful command-line utilities from other distros (ddrescue, gptfdisk, man-pages, usbutils etc.)
-bundle-cli-utils
+#bundle-cli-utils
 #
 ## Support for extra filesystems (NTFS, BTRFS, LVM/RAID etc.) and encryption
-bundle-filesystems
+#bundle-filesystems
 #
 ## Extra media codecs for music and video files
-bundle-media-codecs
+#bundle-media-codecs
 ## Mobile data support for devices with a built-in 3G/4G/5G modem
 ## (note that this does not include support for voice calls and SMS)
-bundle-modemmanager
+#bundle-modemmanager
 ## Wireless and wired networking support and service discovery
 bundle-networking
 ## Printing/scanning support and drivers
-bundle-printing
+#bundle-printing
 ## Support for Windows games and applications
-bundle-wine
+#bundle-wine
 
 #### GPU drivers ####
-bundle-amd-gpu
-bundle-intel-gpu
-bundle-nvidia-free
+#bundle-amd-gpu
+#bundle-intel-gpu
+#bundle-nvidia-free
 #bundle-nvidia-pro
 #bundle-nvidia-pro-340xx
 #bundle-nvidia-pro-390xx
@@ -82,8 +75,6 @@ pipewire-zeroconf
 wireplumber
 
 #### Compilers, extra software repositories and tools ####
-#archlinuxcn-keyring
-#archlinuxcn-mirrorlist-git
 base-devel
 chaotic-keyring
 chaotic-mirrorlist
@@ -97,37 +88,37 @@ phonon-qt6-gstreamer-git
 qt6-multimedia-gstreamer
 #
 ## Essential KDE applications (uncomment all if installing KDE Plasma)
-ark
+#ark
 dolphin
-gwenview
-kate
-kcalc
+#gwenview
+#kate
+#kcalc
 konsole
 kwalletmanager
 plasma-systemmonitor
-spectacle
+#spectacle
 #
 ## KDE Plasma extra functionality (recommended)
-dolphin-plugins
+#dolphin-plugins
 #kdeconnect
 #kdepim-addons
-kdeplasma-addons
+#kdeplasma-addons
 #kio-gdrive
-koi-git
-packagekit-qt6
+#koi-git
+#packagekit-qt6
 #plasma-vault
-plasma-welcome
+#plasma-welcome
 #
 ## Useful KDE applications
-filelight
-isoimagewriter
-kcharselect
-kcolorchooser
-kfind
-khelpcenter
-kolourpaint
-krename
-okular
+#filelight
+#isoimagewriter
+#kcharselect
+#kcolorchooser
+#kfind
+#khelpcenter
+#kolourpaint
+#krename
+#okular
 #
 ## Extra KDE applications
 #kalarm
@@ -138,40 +129,40 @@ okular
 #okteta
 #
 ## Themes
-fruit-cursors
-klassy-git
-klassy-qt5-git
-plasma-colors-midnight
-plymouth-theme-breeze
+#fruit-cursors
+#klassy-git
+#klassy-qt5-git
+#plasma-colors-midnight
+#plymouth-theme-breeze
 
 #### EXTRA SOFTWARE AND PACKAGES ####
 ## Internet
-firefox-dark-reader
-firefox-i18n-en-gb
-firefox-ublock-origin
-qbittorrent
+#firefox-dark-reader
+#firefox-i18n-en-gb
+#firefox-ublock-origin
+#qbittorrent
 #
 ## Productivity
-libreoffice-fresh-en-gb
+#libreoffice-fresh-en-gb
 #
 ## Multimedia
-cheese
-obs-studio
-vlc
-vlc-plugins-all
+#cheese
+#obs-studio
+#vlc
+#vlc-plugins-all
 #
 ## Gaming
-lib32-mangohud
-lutris
-mangohud
+#lib32-mangohud
+#lutris
+#mangohud
 #
 ## System tools
 arch-install-scripts
-fastfetch
-gparted
+#fastfetch
+#gparted
 nano
-pamac-plasma
-testdisk
-ufw
+#pamac-plasma
+#testdisk
+#ufw
 
 #### User specified extra software - add your packages below ####
